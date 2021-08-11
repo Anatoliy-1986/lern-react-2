@@ -4,14 +4,14 @@ import { useState } from 'react'
 //import './Task.scss';
 import './Task.css';
 
+
 const initNotes = [
 	{text: 'note1', isEdit: false},
 	{text: 'note2', isEdit: false},
 	{text: 'note3', isEdit: false},
 ];
 
-function Task () {
-	
+function Todos() {
 	const [notes, setNotes] = useState(initNotes);
 	
     const handleChecked = (currentIndex) => (event) => {
@@ -30,4 +30,4 @@ function Task () {
 	</ul>;
 }
 
-export default Task;
+export default Todos;
