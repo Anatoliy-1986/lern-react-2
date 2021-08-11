@@ -36,8 +36,8 @@ function Task () {
 
 	 
 	const handleChecked = (currentIndex) => (event) => {
-		list.map((item, index) => index === currentIndex ? {...item, checked:event.target.checked} : item)
-		
+		const result = list.map((item, index) => index === currentIndex ? {...item, completed:event.target.checked} : item)
+		setList(result)
 	}
 
 
