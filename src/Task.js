@@ -7,14 +7,11 @@ import './Task.css';
 
 function Task () {
 	
-	  const [list, setList] = useState([
-       {name: 'First mission', completed: false},
-	   {name: 'Second mission', completed: false}
-	  ]);
+	  const [list, setList] = useState([]);
 	
 	  const [value, setValue] = useState('');
 
-
+	  const [isEdit, setIsEdit] = useState(false);
 	
 	  const enteryText = (event) => {
 		  setValue(event.target.value);
@@ -22,34 +19,24 @@ function Task () {
 	
 	  const addText = () => {
 		if (!value.length) return
-		setList([...list, {name: value, completed: false}]);
+		setList([...list, value]);
 		setValue('');
 	  };
-	  
-	/*let msg;
-   if(disabled){
-      msg = <span>галочка есть</span>
-   }else{
-      msg = <span>галочки нет</span>
-	  <span>{msg}</span>
-   }*/
 
-	 
 	const handleChecked = (currentIndex) => (event) => {
-		list.map((item, index) => index === currentIndex ? {...item, checked:event.target.checked} : item)
-		
+		list.map((item, index) => index === currentIndex ? {...item, checked:event.target.checked} : item)  
 	}
 
 
 	return <div className="Todo">
-          {list.map((item, index) => 
+          {list.map((item, index) =>
 		  <label key={index}>
-			 <input type="checkbox" id={index} checked={item.completed} onChange={handleChecked(index)} />
-			 <span>{item.name}</span></label>)}
+			 <input type="checkbox" id={index} checked={item.disabled} onChange={handleChecked(index)} />
+			 {!isEdit ? <span onClick={() => setIsEdit(true)}>{item}</span> : 
+			 <input value={item} onChange={event => setValue(event.target.value)}
+			    onBlur={() => setIsEdit(false)}/>}</label>}
 			<input onChange={enteryText} value={value} />
-			<button onClick={addText}>Добавить в список</button>
-			
-			
+			<button onClick={addText}>Добавить в список</button>	
 	</div>;
 }
 
