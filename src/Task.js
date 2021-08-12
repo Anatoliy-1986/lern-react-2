@@ -4,10 +4,11 @@ import { useState } from 'react'
 //import './Task.scss';
 import './Task.css';
 
+
 const initNotes = [
-	{text: 'note1', isEdit: false},
-	{text: 'note2', isEdit: false},
-	{text: 'note3', isEdit: false},
+	{text: 'First mission: Learn html', isEdit: false},
+	{text: 'Second mission: Learn css', isEdit: false},
+	{text: 'Third mission: Learn react', isEdit: false},
 ];
 
 function Task () {
@@ -24,10 +25,10 @@ function Task () {
         setNotes(result)
 	}
 
-	return <ul>
-		{notes.map((note, index) => <div key={index}> <input type="checkbox"  checked={note.isEdit} onChange={handleChecked(index)}/>
-        {note.isEdit ? <span className="Todostext">{note.text}</span> : <input type="text" value={note.text} onChange={handleChange(index)} />}</div>)}
-	</ul>;
+	return <div className="Todo">
+		{notes.map((note, index) => <div className="Todo-line" key={index}> <input className="Сheckbox" type="checkbox"  checked={note.isEdit} onChange={handleChecked(index)}/>
+        {note.isEdit ? <div className="Todotext">{note.text}</div> : <input className="Entery-field" type="text" value={note.text} onChange={handleChange(index)} />}</div>)}
+	</div>;
 }
 
 export default Task;
