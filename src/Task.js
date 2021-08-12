@@ -25,9 +25,16 @@ function Task () {
         setNotes(result)
 	}
 
+	const removeTodoLine = (currentIndex) => (event) => { const result = notes.filter((note, index) => index !== currentIndex)  
+      setNotes(result)
+	}
+
 	return <div className="Todo">
-		{notes.map((note, index) => <div className="Todo-line" key={index}> <input className="Сheckbox" type="checkbox"  checked={note.isEdit} onChange={handleChecked(index)}/>
-        {note.isEdit ? <div className="Todotext">{note.text}</div> : <input className="Entery-field" type="text" value={note.text} onChange={handleChange(index)} />}</div>)}
+		{notes.map((note, index) => <div className="Todo-line" key={index}> <input className="Сheckbox" type="checkbox" id={index} checked={note.isEdit} onChange={handleChecked(index)}/><label for={index}></label>
+        {note.isEdit ? <div className="Todotext">{note.text}</div> : <input className="Entery-field" type="text" value={note.text} onChange={handleChange(index)} />} 
+		<i className="material-icons red-text"
+          onClick={removeTodoLine(index)}
+        >delete</i></div>)}
 	</div>;
 }
 

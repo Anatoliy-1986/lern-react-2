@@ -39,11 +39,11 @@
 	background: rgb(95, 185, 185);
   }
 
-  /*.Сheckbox {
-    display: none;
-  }*/
-
   .Сheckbox {
+    display: none;
+}
+
+  .Сheckbox + label {
     border: 1px solid #fff;
     font-size: 24pt;
     display: inline-block;
@@ -56,9 +56,13 @@
     vertical-align: middle;
   }
 
-  /*.Сheckbox:checked::after {
+  .Сheckbox:checked + label::after {
     content: "\2713";
-  }*/
+  }
+
+  i {
+    z-index: 2;
+  }
 
     
 
