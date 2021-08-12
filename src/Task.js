@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { useState } from 'react'
-//import './Task.scss';
 import './Task.css';
 
 
@@ -26,7 +25,7 @@ function Task () {
 	}
 
 	const removeTodoLine = (currentIndex) => (event) => { 
-	   const result = notes.filter((note, index) => index !== currentIndex)  
+	   const result = notes.filter((__, index) => index !== currentIndex)  
       setNotes(result)
 	}
 
