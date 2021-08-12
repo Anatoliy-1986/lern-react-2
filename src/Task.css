@@ -1,0 +1,79 @@
+
+
+.Todo {
+    background-color: rgb(67, 179, 179);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 16px;
+    margin: 30px;
+  }
+
+  .Todo-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+  }
+
+  .Todotext,
+  .Entery-field {
+    width: 200px;
+    height: 20px;
+    font-size: 16px;
+    padding: 6px 0 4px 10px;
+    margin: 10px 10px;
+    border-radius: 8px;
+    border: none;
+  }
+
+  .Todotext {
+    text-decoration: line-through;
+    text-align: center;
+    vertical-align:center;
+  }
+
+  .Entery-field {
+	text-align: center;
+	background: rgb(95, 185, 185);
+  }
+
+  .Сheckbox {
+    display: none;
+}
+
+  .Сheckbox + label {
+    border: 1px solid #fff;
+    font-size: 24pt;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 0.25em;
+    margin: 4px 8px 8px 8px;
+    padding: 2px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .Сheckbox:checked + label::after {
+    content: "\2713";
+  }
+
+  i {
+    text-indent: -9999px;
+    background-image: url("./img/vedro.png");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+  }
+
+    
+
+
+
+
+
+

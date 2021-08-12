@@ -1,50 +1,41 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { useState } from 'react'
-import './Task.scss';
 
+import { useState } from 'react'
+import './Task.css';
+
+
+const initNotes = [
+	{text: 'First mission: Learn html', isEdit: false},
+	{text: 'Second mission: Learn css', isEdit: false},
+	{text: 'Third mission: Learn react', isEdit: false},
+];
 
 function Task () {
 	
-	  const [list, setList] = useState([]);
+	const [notes, setNotes] = useState(initNotes);
 	
-	  const [value, setValue] = useState('');
+    const handleChecked = (currentIndex) => (event) => {
+		const result = notes.map((note, index) => index === currentIndex ? {...note, isEdit:event.target.checked} : note)  
+        setNotes(result)
+	}
 
-	  const [disabled, setDisabled] = useState(false);
-	
-	  function enteryNumber(event) {
-		  setValue(event.target.value);
-	  };
-	
-	  const handleChangeString = () => {
-		setList([...list, value]);
-		setValue('');
-	  };
-	  
-	/*let msg;
-   if(disabled){
-      msg = <span>галочка есть</span>
-   }else{
-      msg = <span>галочки нет</span>
-	  <span>{msg}</span>
-   }*/
+    const handleChange = (currentIndex) => (event) => {
+		const result = notes.map((note, index) => index === currentIndex ? {...note, text:event.target.value} : note)  
+        setNotes(result)
+	}
 
-	 /* const soldCheckbox = ({ target: { checked } }) => {
-		
-		setDisabled(checked);
-	  };*/
-	
+	const removeTodoLine = (currentIndex) => (event) => { 
+	   const result = notes.filter((__, index) => index !== currentIndex)  
+      setNotes(result)
+	}
+
 	return <div className="Todo">
-          {list.map((item, index) => 
-		  <label key={index}>
-			 <input type="checkbox" id={index} checked={disabled} onChange={ () => setDisabled(!disabled)} />
-			 <span>{item}</span></label>)}
-			<input onChange={enteryNumber} value={value} />
-			<button onClick={handleChangeString}>Добавить в список</button>
-			
-			
+		{notes.map((note, index) => <div className="Todo-line" key={index}> <input className="Сheckbox" type="checkbox" id={index} checked={note.isEdit} onChange={handleChecked(index)}/><label htmlFor={index}></label>
+        {note.isEdit ? <div className="Todotext">{note.text}</div> : <input className="Entery-field" type="text" value={note.text} onChange={handleChange(index)} />} 
+		<i className="material-icons red-text"
+          onClick={removeTodoLine(index)}
+        >delete</i></div>)}
 	</div>;
 }
-
 
 export default Task;
